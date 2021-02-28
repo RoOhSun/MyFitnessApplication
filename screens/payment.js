@@ -1,10 +1,12 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-export default function Measurement() {
+
+
+export default function payment() {
     return (
         <View>
-            <Text>This is Measurement</Text>
+            <Text>Pay</Text>
         </View>
     )
 }

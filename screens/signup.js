@@ -4,8 +4,6 @@ import { View, Text, StyleSheet,TextInput,ScrollView, TouchableOpacity  } from '
 
 export default function signup({navigation}) {
     const [name,setName] = React.useState('')
-    const [address,setAddress] = React.useState('')
-    const [contact,setPhoneNum] = React.useState('')
     const [email,setEmail] = React.useState('')
     const [username,setUsername] = React.useState('')
     const [password,setPassword] = React.useState('')
@@ -15,12 +13,7 @@ export default function signup({navigation}) {
         if (name==='') {
             alert('Please input full name')
         }
-        else if (address==='') {
-            alert('Please input address')
-        }
-        else if (contact==='') {
-            alert('Please input your Phone Number')
-        }
+       
         else if (email==='') {
             alert('Please input your Email')
         }
@@ -38,6 +31,9 @@ export default function signup({navigation}) {
             navigation.navigate('login')
         }     
     }
+    const onPressCancel=()=>{
+      navigation.navigate('login')
+    }
 
     const Button = ({title,onPress}) => {
         return (
@@ -50,6 +46,7 @@ export default function signup({navigation}) {
 
     return (
         <ScrollView style={styles.main}>
+          <Text style={styles.header}>Register an Account!!!</Text>
            < View style={styles.register}>
             <Text style={styles.textLabel}>Name</Text>
             <TextInput
@@ -57,45 +54,21 @@ export default function signup({navigation}) {
               placeholder="Name"
              onChangeText={text => setName(text)} 
             />   
-          </View>
-
-            <View style={styles.register}>
-            <Text style={styles.textLabel}>Address</Text>
-            <TextInput
-              style={styles.textInput}
-              placeholder="Eg:Malepatan"
-              onChangeText={text => setAddress(text)}
-            />   
-          </View>
-
-          < View style={styles.register}>
-            <Text style={styles.textLabel}>Phone Number</Text>
-            <TextInput
-              style={styles.textInput}
-              placeholder="Eg:9806757117"
-             onChangeText={text => setPhoneNum(text)} 
-            />   
-          </View>
-
-            <View style={styles.register}>
+            
             <Text style={styles.textLabel}>Email</Text>
             <TextInput
               style={styles.textInput}
               placeholder="Eg:example@abc.com"
               onChangeText={text => setEmail(text)}
             />   
-          </View>
-
-          < View style={styles.register}>
+         
             <Text style={styles.textLabel}>Username</Text>
             <TextInput
               style={styles.textInput}
               placeholder="Username"
               onChangeText={text => setUsername(text)} 
             />   
-          </View>
-
-            <View style={styles.register}>
+          
             <Text style={styles.textLabel}>Password</Text>
             <TextInput
               style={styles.textInput}
@@ -103,8 +76,8 @@ export default function signup({navigation}) {
               placeholder="********"
               onChangeText={text => setPassword(text)}
             />   
-          </View>
-          <View style={styles.register}>
+          
+          
             <Text style={styles.textLabel}>Confirm Password</Text>
             <TextInput
               style={styles.textInput}
@@ -112,8 +85,10 @@ export default function signup({navigation}) {
               placeholder="********"
               onChangeText={text => setConfirmPassword(text)}
             />   
-
-          <Button title='Register'  color='black' onPress={onPressSignup}/>
+          </View>
+          <View style={styles.btnView}>
+          <Button title='Register'  onPress={onPressSignup}/>
+          <Button title='Cancel'   onPress={onPressCancel}/>
           </View>
         </ScrollView>
     )
@@ -121,16 +96,28 @@ export default function signup({navigation}) {
 const styles = StyleSheet.create({
     main:{
         flex:1,
+        backgroundColor:"#e6e6e6",
+        
 
+    },
+    header:{
+      textAlign:'center',
+      fontWeight:'bold',
+      fontSize:26,
+      padding:25,
     }
     , textLabel:{
         letterSpacing:1.05,
-        textTransform:'uppercase',
         paddingLeft:10
         
       },
       register:{
-        marginVertical:8
+        margin:20,
+        borderColor:'#455a64',
+        borderWidth:1,
+        borderRadius:30,
+        paddingTop:25, 
+        paddingBottom:25,
       },
       textInput:{
          height: 50,
@@ -139,19 +126,27 @@ const styles = StyleSheet.create({
          margin:10,
       },
       btn:{
-        backgroundColor:'black',
+        backgroundColor:'grey',
         height:50,
+        width:150,
         color:"white",
         justifyContent:'center',
         alignItems:'center',
         marginTop:40,
         borderRadius:40,
+      
     
       },
       btnText:{
-        color:'white',
+        color:'black',
         fontWeight:'bold',
-        textTransform:'uppercase'
+        textTransform:'uppercase',
+        
+      },
+      btnView:{
+        flexDirection:'row',
+        justifyContent:'space-around'
+        
       }
 
 });
