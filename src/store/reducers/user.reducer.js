@@ -1,5 +1,5 @@
 let initialState = {
-    login: false,
+    login1: false,
     username: '',
   };
   
@@ -8,13 +8,7 @@ let initialState = {
       case 'SET_LOGIN_STATUS':
         return {
           ...state,
-          login: action.payload,
-        };
-  
-      case 'SET_USERNAME':
-        return {
-          ...state,
-          login: action.payload,
+          login1: action.payload,
         };
   
       default:

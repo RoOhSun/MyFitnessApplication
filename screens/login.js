@@ -16,16 +16,18 @@ const storeData = async (key,value) => {
 }
 
 
-const Login=({navigation})=> {
 
+export default function login({navigation}) {
+  
   const [username,setUsername]  = React.useState('')
   const [password,setPassword] = React.useState('')
 
 
-  const state = useSelector(state => state.login)
+
+ // const state = useSelector(state => state.user)
   const dispatch = useDispatch()
 
-  console.log(state)
+ // console.log(state)
 
  const onLogin = () => {
    if(username === '') {
@@ -37,11 +39,10 @@ const Login=({navigation})=> {
          alert('Password cannot be empty') 
          return ;
    }
+   storeData('user', username);
+   dispatch({type: 'SET_LOGIN_STATUS', payload: true})
 
-   dispatch(setUser(username))
-  
-  //  storeData('user', username);
-  navigation.navigate('dashboard' )
+  //navigation.navigate('MyFitness' )
  }
 
  const Button = ({title,onPress}) => {
@@ -96,7 +97,7 @@ const Login=({navigation})=> {
 
 
 
-export default Login;
+
 
 const styles = StyleSheet.create({
   container: {

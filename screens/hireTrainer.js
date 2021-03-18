@@ -10,6 +10,7 @@ const DATA = [
     title: 'Harry',
     cost:"Rs:1540",
     image: 'https://i.pinimg.com/originals/dd/98/4e/dd984e803e114f5facb744b0ca8db6ba.jpg',
+    address:'ABC'
    
 
    
@@ -19,6 +20,7 @@ const DATA = [
     title: 'James',
     cost:"Rs:2404",
     image:'https://i.pinimg.com/originals/dd/98/4e/dd984e803e114f5facb744b0ca8db6ba.jpg',
+    address:'ABC'
    
     
   },
@@ -27,6 +29,7 @@ const DATA = [
     title: 'Charlie',
     cost:"Rs:4545",
     image:'https://i.pinimg.com/originals/dd/98/4e/dd984e803e114f5facb744b0ca8db6ba.jpg',
+    address:'ABC'
   },
 ];
 
@@ -34,15 +37,16 @@ const DATA = [
 
 
 export default function hireTrainer({navigation}) {
-  const Item = ({ title,  cost, image }) => (
+  const Item = ({ title,  cost, image,address }) => (
     <ScrollView style={styles.item}> 
     <View style={styles.trainer}>
     <View>
       <Image style={styles.img} source={{uri:image}}/> 
-      <Text style={styles.title}>{title}</Text>
       </View>
       <View style={styles.all}>
+      <Text style={styles.title}>{title}</Text>
       <Text style={styles.all}>{cost}</Text>
+      <Text style={styles.all}>{address}</Text>
       </View>
       <View style={styles.btn}>
       <TouchableOpacity onPress={hireClick} style={{}}>
@@ -56,11 +60,10 @@ export default function hireTrainer({navigation}) {
   );
   
       const renderItem = ({ item }) => (
-        <Item title={item.title} desc={item.desc} cost={item.cost} image={item.image}/>
+        <Item title={item.title} desc={item.desc} cost={item.cost} image={item.image} address={item.address}/>
       );
       const hireClick=()=>{
         navigation.navigate('payment')
-      
       }
  
   
@@ -79,6 +82,7 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor:'black'
+    
 
     },
     item: {
@@ -90,21 +94,22 @@ const styles = StyleSheet.create({
       backgroundColor:"black" 
     },
     title: {
-      fontSize: 20,
-      textAlign:'center',
-      color:'white'
+      color:'white',
+      paddingLeft:30,
+      fontSize:20
     },
     img:{
       height:100,
       width:100,
       borderRadius:20,
       borderWidth:1,
-      borderColor:'#455a64',
+      borderColor:'white',
     },
     trainer:{
       flexDirection:'row',
       alignItems:'center',
-      alignContent:'space-around'
+      alignContent:'space-around',
+      margin:10,
       
       
   
@@ -112,21 +117,28 @@ const styles = StyleSheet.create({
     all:{
       color:'white',
       paddingLeft:30,
+      fontSize:20,
+      // flexWrap:'wrap', width:"35%",
+
+      
     
     }
     ,btn:{
-     
-      paddingLeft:55,
+      borderRadius:20,
+      marginLeft:40,
+      backgroundColor:'white'
     },
     hireBtn:{
-      borderWidth:1,
-      borderColor:'white',
+      //borderWidth:1,
+      
       backgroundColor:'transparent',
       height:50,
-      color:"white",
+      color:"black",
       textAlign:'center',
+      fontWeight:'bold',
       width:60,
       borderRadius:20,
-      paddingTop:15
+      paddingTop:15,
+      
     }
   });

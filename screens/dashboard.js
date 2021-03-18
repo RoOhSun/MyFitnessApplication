@@ -5,16 +5,19 @@ import exercise from './exercise';
 import setPlan from './setPlan';
 import measurement from './measurement';
 import hireTrainer from './hireTrainer';
-import contactUs from './contactUs';
+import aboutUs from './aboutUs';
 
 
 
 
 
-const Tab = createBottomTabNavigator();
+
+
 
 export default function dashboard() {
  
+
+  const Tab = createBottomTabNavigator();
   return (
    
       <Tab.Navigator>
@@ -56,16 +59,18 @@ export default function dashboard() {
         }
         }
         />
-        <Tab.Screen name="ContactUs" component={contactUs}
+        <Tab.Screen name="AboutUs" component={aboutUs}
         options={{
-          tabBarLabel:"ContactUs",
+          tabBarLabel:"AboutUs",
           tabBarIcon:()=>(
-            <Image style={{ width: 30, height: 30 }} source={{uri:'https://img.icons8.com/wired/2x/phone.png'}} />
+            <Image style={{ width: 30, height: 30 }} source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF1tN2JMkOB2POUCxD01V2GVLCGV73DmJT-w&usqp=CAU'}} />
           ),
-        }
-        }
+        }}
         />
+         
+      
       </Tab.Navigator>
     
   );
 }
+

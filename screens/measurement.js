@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {ScrollView, View, Text, TouchableOpacity, TextInput, StyleSheet, Alert } from 'react-native'
+import {ScrollView, View, Text, TouchableOpacity, TextInput, StyleSheet, Alert ,ToastAndroid} from 'react-native'
 
 
 
@@ -7,10 +7,9 @@ export default function measurement () {
    const [age,setAge] = React.useState('')
    const [height,setHeight] = React.useState('')
    const [weight,setWeight] = React.useState('')
+   const [result,setResult] = React.useState('')
+   const [weightType,setWeightType] = React.useState('')
    
-
-  
-  
 
    const onCalculate=()=>{
       if(age==''){
@@ -22,13 +21,41 @@ export default function measurement () {
       else if(weight==''){
          alert('Please input weight (kg)')
       }
-    
+      else{
+        var bmi  = (parseFloat(weight)*10000)/(parseFloat(height)*parseFloat(height));
+      bmi = bmi.toFixed(2)
+     // console.log(bmi);
+      setResult(bmi);
+      if(bmi<18.5){
+         setWeightType('Under Weight')
+      }
+      else if(bmi>=18.5&&bmi<25){
+         setWeightType('Normal Weight')
+      }
+      else if(bmi>=25&&bmi<30){
+         setWeightType('Over Weight')
+      }
+      else if(bmi<=30){
+         setWeightType('Obese')
+      }
+      else if(bmi>30){
+         setWeightType('Mordibly Obese')
+      }
+      else{
+         ToastAndroid.show(
+            "Looks like you have entered wrong data.",
+            ToastAndroid.SHORT
+         )
 
+      }
+      
    }
+}
   
 
    
       return (
+         
          <ScrollView style = {styles.container}>
             <Text style={styles.title}>BMI Calculator</Text>
             <View style={styles.bmiCal}>
@@ -43,7 +70,7 @@ export default function measurement () {
 
             <Text  style = {styles.label}>Height</Text>
             <TextInput style = {styles.input}
-              keyboardType ='numeric'
+               keyboardType ='numeric'
                placeholder = "Height (Cm)" 
                placeholderTextColor="gray"
                onChangeText={text => setHeight(text)} 
@@ -51,7 +78,7 @@ export default function measurement () {
 
             <Text  style = {styles.label}>Weight</Text>
             <TextInput style = {styles.input}
-                keyboardType ='numeric'
+               keyboardType ='numeric'
                placeholder = "Weight (Kg)" 
                placeholderTextColor="gray"
                onChangeText={text => setWeight(text)} 
@@ -62,13 +89,13 @@ export default function measurement () {
                <Text style = {styles.submitButtonText}> Calculate </Text>
             </TouchableOpacity>
             <View style ={styles.result}>
-               <Text style={styles.output}></Text>
-               <Text style ={styles.resultText}></Text>
-
+               <Text style={styles.output}>Your BMI is {result}</Text>
+               <Text style ={styles.resultText}>Type: {weightType}</Text>
             </View>
             </View>
             
 </ScrollView>
+
       )
    
 }
@@ -137,6 +164,7 @@ const styles = StyleSheet.create({
    output:{
       textAlign: "center",
       fontSize: 30,
+      color:'#fff'
    },
 
    resultText:{
@@ -144,6 +172,6 @@ const styles = StyleSheet.create({
       paddingBottom:10,
       textAlign: "center",
       fontSize: 30,
-      color: 'blue'
+      color: '#fff'
    }
 })

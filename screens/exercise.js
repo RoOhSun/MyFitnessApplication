@@ -1,10 +1,16 @@
 import React from 'react'
-import { View, Text, StyleSheet ,Image,TouchableOpacity} from 'react-native'
+import {useDispatch} from 'react-redux'
 import { ScrollView } from 'react-native-gesture-handler'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { View, Text, StyleSheet ,Image,TouchableOpacity, Alert,ToastAndroid} from 'react-native'
+
 
 
 
 export default function exercise({navigation}) {
+
+    const dispatch = useDispatch()
+
     const onPressBack=()=>{
         navigation.navigate('back')
     }
@@ -26,19 +32,68 @@ export default function exercise({navigation}) {
     const onPressAbs=()=>{
         navigation.navigate('abs')
     }
+    const onPressLogout=()=>{
+        Alert.alert(
+            'Logout',
+        "Are you sure you want to log out!!",
+        [
+            {
+            text:'Cancel',
+            onPress:()=> console.log('Cancel'),
+            style:'cancel',
+        },
+        {
+            text: 'Ok',
+            onPress: async ()=>{
+                try{
+                await AsyncStorage.removeItem('user',()=>{
+                    dispatch({type: 'SET_LOGIN_STATUS', payload: false});
+                    ToastAndroid.show(
+                        "Log out Successfully",
+                        ToastAndroid.SHORT,
+                     );
+                    })
+                }
+                    catch (e) {
+                            console.log('Error')
+                    }
+                },
+            },
+        ],
+        )
+    }
+
+
+
+        
+    
+
+    const HeadTitle=()=>{
+        return(
+          <View style={{
+            paddingTop:10,
+            height:50,
+            backgroundColor:'black',
+            flexDirection:'row',
+            justifyContent: 'space-between'
+          }}>
+              <Text style={{color:'white', fontSize:25, fontWeight:'bold', paddingLeft:25}}>My Fitness</Text>
+              <TouchableOpacity onPress={onPressLogout} style={{paddingRight:20}}><Image style={{height:30, width:30}} source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCEiOE5jqv_WtAe_GB6YAS35gIwRKrHkqIcg&usqp=CAU'}}/>
+                   </TouchableOpacity>
+            </View>
+        )
+    }
     
     return (
         <ScrollView style={styles.main}>
+            <HeadTitle/>
             <View style={styles.exe}>
             <TouchableOpacity onPress={onPressBack} style={{}}><Image style={styles.img}source={{uri:'https://www.muscleandfitness.com/wp-content/uploads/2014/09/back-pose.jpg?quality=86&strip=all'}}/><Text style={styles.workout}> BACK </Text></TouchableOpacity>
-            
             </View>
 
             <View style={styles.exe}>
             <TouchableOpacity onPress={onPressChest} style={{}}><Image style={styles.img} source={{uri:'https://t4.ftcdn.net/jpg/01/55/60/55/360_F_155605563_1dCLA8nFPPc7DJkp7qkbfzjzKFxrqeKi.jpg'}}/><Text style={styles.workout}> CHEST </Text>
             </TouchableOpacity>
-         
-
             </View>
 
             <View style={styles.exe}>
@@ -73,13 +128,13 @@ export default function exercise({navigation}) {
 const styles = StyleSheet.create({
     main:{
         flex:1,
-        backgroundColor:"black",
+       backgroundColor:"black",
         
         
     },
     exe:{
        //flexDirection:'row',
-        margin:2,
+        margin:5,
         borderColor:'white',
         borderWidth:1,
         borderRadius:30,
@@ -90,15 +145,7 @@ const styles = StyleSheet.create({
         
         
     },
-   /* exeOverlay:{
-        position:'absolute',
-        width:'100%',
-        height:'100%',
-        backgroundColor:'rgba(0,0,0,0.4)',
-        position:'absolute',
-        
-
-    },*/
+ 
     workout:{
         textAlign:'center',
         color:'white',
@@ -109,9 +156,10 @@ const styles = StyleSheet.create({
     },
    
     img:{
-        height:120,
+       height:130,
+       //width:350,
        paddingLeft:300,
-       paddingRight:80,
+      paddingRight:80,
        borderRadius:30,
         
         
