@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, ToastAndroid } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity} from 'react-native'
 import addPlan from './addPlan';
 
 export default function setPlan({navigation}) {

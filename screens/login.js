@@ -88,7 +88,13 @@ export default function login({navigation}) {
           </View>
 
           <Button title="Login" style={styles.loginBtn} color="black" onPress={onLogin}/>
-            <Text style={styles.signup}>Dont have any account? <TouchableOpacity onPress={signupClick} style={{}}><Text >Sign up</Text></TouchableOpacity></Text>
+          <View
+          style={{flexDirection: 'row', justifyContent: 'center',alignItems:'center', margin:10}}>
+          <Text>Don't have any account?</Text>
+          <TouchableOpacity onPress={signupClick}>
+            <Text style={{fontWeight: 'bold', textDecorationLine: 'underline'}}> Sign Up</Text>
+          </TouchableOpacity>
+        </View>
         </View>
   </ScrollView>
   );
@@ -174,8 +180,9 @@ const styles = StyleSheet.create({
   },
   signup:{
     textAlign:'center',
-    marginTop:15
+    
   },
+  
   
  
 });

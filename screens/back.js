@@ -1,5 +1,6 @@
 
 import React, {useState} from "react";
+
 import { View, Text,StyleSheet,Image,Modal,Alert } from 'react-native'
 import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 
@@ -24,12 +25,12 @@ export default function back() {
       {
         exeName:"CABLE SEATED WIDE GRIP ROW",
         url:'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/workouts/2017/10/seatedcablerow-1509373251.gif',
-        desc:""
+        desc:"1. Sit upright on the bench and plant your feet on the foot pads, knees bent. \n \n 2. Extend your arm and hold the handle, Move your shoulders back and down Brace your core. \n\n 3. Exhale. Bend your elbow to pull the handle, keep moving youe elbows tucked in and your back neutral. \n \n 4. Repeat"
       },
       {
         exeName:"DUMBBELL ONE ARM BENT OVER`",
         url:'https://hips.hearstapps.com/ame-prod-menshealth-assets.s3.amazonaws.com/main/assets/dumbbell-single-arm-row.gif?resize=480:*',
-        desc:"1. Place your right foot on the floor, rest your left knee and hand on a flat bench.\n \n 2. Lean forward  so your body's weight is supported by your left arm and knee. \n \n 3.Keeping your back flat,reach down and pick up the dumbell with your right hand. \n \n 4. Raise your right arm as close to your chest as possible, while bending and bringing your elbow back as far as you can. \n \n  5."
+        desc:"1. Place your right foot on the floor, rest your left knee and hand on a flat bench.\n \n 2. Lean forward  so your body's weight is supported by your left arm and knee. \n \n 3.Keeping your back flat,reach down and pick up the dumbell with your right hand. \n \n 4. Raise your right arm as close to your chest as possible, while bending and bringing your elbow back as far as you can. \n \n  5. Pause at the top for moment and then lower the dumbell in a controlled manner to the starting position. \n \n 6. Repeat"
       },
       {
         exeName:"LEVER T BAR(Plate loaded)",
@@ -39,12 +40,12 @@ export default function back() {
       {
         exeName:"SUSPENDED ROW",
         url:'https://blog.myfitnesspal.com/wp-content/uploads/2020/05/18-TRX-Inverted-Row.gif',
-        desc:""
+        desc:"1. Pull body up so side of the chest make contact with handles while keeping body and legs straight. \n\n 2. Return until arms are extended straight and shoulders are stretched forward. \n\n 3.Repeat"
       },
       {
         exeName:"SMITH NARROW ROW",
         url:'https://thumbs.gfycat.com/DismalAstonishingIcterinewarbler-small.gif',
-        desc:""
+        desc:"1.Set up for the smith machine bent over row by lowering the bar on the smith all the way and adding the weight you want to use. \n\n 2.Stand facing the bar and grip the bar with an overhand grip, with your hands wider than shoulder width apart. \n\n 3.Stand straight up to take the weight off the machine.\n\n 4. Straighten your back, bend at the knees slightly, and slowly let the weight down until it's just below your knees. This is the start position. \n\n 5. Keeping your body fixed, pull the weight up until it almost hits your body. \n\n 6.Pause, and then slowly lower the bar back to the starting position. \n\n 7. Repeat"
       }
     ]
 
@@ -171,6 +172,7 @@ const styles = StyleSheet.create({
          height:100,
          width:100,
          margin:8,
+    
          
         
     },
